@@ -1,21 +1,25 @@
-import { registerMicroApps, addGlobalUncaughtErrorHandler } from 'qiankun'
-import config from './config'
+/*
+ * @Author: jrucker
+ * @Description:
+ * @Date: 2021/10/25 18:56:51
+ * @LastEditors: jrucker
+ * @LastEditTime: 2022/02/15 18:18:56
+ */
 
-const apps = config.map(item => {
+import { registerMicroApps, addGlobalUncaughtErrorHandler } from 'qiankun'
+import { config } from './config'
+
+const apps: any = config.map(item => {
   return {
     ...item,
     props: {
+      entry: item.entry,
       routerBase: item.activeRule
     }
   }
 })
 
-registerMicroApps(apps, {
-  // beforeLoad: () => {
-  // },
-  // afterMount: () => {
-  // }
-})
+registerMicroApps(apps, {})
 
 addGlobalUncaughtErrorHandler((event: Event | string) => {
   console.error('error', event)

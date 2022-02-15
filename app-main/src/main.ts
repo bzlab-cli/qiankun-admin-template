@@ -3,7 +3,7 @@
  * @Description:
  * @Date: 2021/10/25 18:56:51
  * @LastEditors: jrucker
- * @LastEditTime: 2022/02/14 17:01:58
+ * @LastEditTime: 2022/02/15 11:30:36
  */
 
 import { createApp, Directive } from 'vue'
@@ -16,7 +16,7 @@ import '@/styles/index.scss'
 import 'normalize.css'
 import * as directives from '@/directives'
 import './permission'
-import '@/micro'
+import '@/core/micro'
 
 const app = createApp(App)
 // 加载所有插件

@@ -3,11 +3,12 @@
  * @Description: 配置文件
  * @Date: 2021/10/25 18:56:51
  * @LastEditors: jrucker
- * @LastEditTime: 2022/02/10 14:52:29
+ * @LastEditTime: 2022/02/15 18:17:34
  */
 
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin') // 压缩css
+const package = require('./package.json');
 
 function resolve(dir) {
   return path.join(__dirname, dir)
@@ -27,7 +28,7 @@ const cdn = {
 };
 
 module.exports = {
-  publicPath: '/',
+  publicPath: '/app/sub-vue',
   outputDir: 'dist',
   assetsDir: 'static',
   lintOnSave: process.env.NODE_ENV === 'development',
@@ -67,30 +68,17 @@ module.exports = {
       ]
     }
   },
-  // configureWebpack: config => {
-  //   config.name = name
-  //   config.resolve.alias['@'] = resolve('src')
-  //   config.optimization.minimizer[0].options.terserOptions.output.comments = false
-  //   config.optimization.minimizer[0].options.terserOptions.compress.warnings = false
-  //   config.optimization.minimizer[0].options.terserOptions.compress.drop_console = true
-  //   config.optimization.minimizer[0].options.terserOptions.compress.drop_debugger = true
+  configureWebpack: config => {
+    config.name = name
+    config.resolve.alias['@'] = resolve('src')
+    config.optimization.minimizer[0].options.terserOptions.output.comments = false
+    config.optimization.minimizer[0].options.terserOptions.compress.warnings = false
+    config.optimization.minimizer[0].options.terserOptions.compress.drop_console = true
+    config.optimization.minimizer[0].options.terserOptions.compress.drop_debugger = true
 
-  //   config.output.library = `${name}-[name]`
-  //   config.output.libraryTarget = 'umd'
-  //   config.output.jsonpFunction = `webpackJsonp_${name}`
-
-  // },
-  configureWebpack: {
-    resolve: {
-      alias: {
-        '@': resolve('src')
-      }
-    },
-    output: {
-      library: "app-vue",
-      libraryTarget: 'umd',
-      jsonpFunction: `webpackJsonp_app-vue`,
-    }
+    config.output.library = `${package.name}-[name]`
+    config.output.libraryTarget = 'umd'
+    config.output.jsonpFunction = `webpackJsonp_${package.name}`
   },
   chainWebpack: (config) => {
     config.plugins.delete('prefetch')

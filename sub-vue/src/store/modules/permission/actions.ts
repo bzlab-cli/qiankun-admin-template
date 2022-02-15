@@ -3,7 +3,7 @@
  * @Author: jrucker
  * @Date: 2020-12-25 15:03:52
  * @LastEditors: jrucker
- * @LastEditTime: 2022/02/12 23:00:15
+ * @LastEditTime: 2022/02/15 13:35:23
  */
 
 import { ActionTree, ActionContext } from 'vuex'
@@ -71,9 +71,9 @@ export const actions: ActionTree<PermissionState, RootState> & Actions = {
     console.log('routes', routes)
     console.log('asyncRoutes', asyncRoutes)
 
-    // commit(PermissionMutationType.SET_ACCESS_CODES, accessedCodes)
-    // commit(PermissionMutationType.SET_ROUTES, asyncRoutes)
     commit(PermissionMutationType.SET_ACCESS_CODES, accessedCodes)
-    commit(PermissionMutationType.SET_ROUTES, accessedRoutes)
+    commit(PermissionMutationType.SET_ROUTES, asyncRoutes)
+    // commit(PermissionMutationType.SET_ACCESS_CODES, accessedCodes)
+    // commit(PermissionMutationType.SET_ROUTES, accessedRoutes)
   }
 }

@@ -3,7 +3,7 @@
  * @Author: jrucker
  * @Date: 2021/10/21 14:13:07
  * @LastEditors: jrucker
- * @LastEditTime: 2022/02/12 23:00:08
+ * @LastEditTime: 2022/02/15 18:17:45
  */
 
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
@@ -27,8 +27,12 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
   ...permissionModules,
   { path: '/:pathMatch(.*)', redirect: '/404', meta: { hidden: true } }
 ]
+
+// @ts-ignore
+const qiankun = window.__POWERED_BY_QIANKUN__
+
 export const router = createRouter({
-  history: createWebHistory('/vue'),
+  history: createWebHistory(qiankun ? '/app/sub-vue' : '/'),
   routes: constantRoutes
 })
 
