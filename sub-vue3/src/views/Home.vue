@@ -14,15 +14,15 @@
 
     <div class="msg-box">
       <div class="msg-title">这里是子应用：</div>
-      <div class="msg-context">{{ msg }}</div>
+      <div class="msg-context">{{ title }}</div>
     </div>
     <div class="msg-box">
       <div class="msg-title">当前主应用姓名为:</div>
-      <div class="msg-context">{{ vuexName.name }}</div>
+      <div class="msg-context">{{ msg }}</div>
     </div>
     <div class="msg-box">
       <el-input v-model="inputValue" type="text" placeholder="请输入你想广播的姓名" />
-      <el-button type="primary" @click="handleVuexMsgChange">更新姓名</el-button>
+      <el-button type="primary" @click="handleChange">更新姓名</el-button>
     </div>
   </div>
 </template>
@@ -36,19 +36,16 @@ export default {
   name: 'Home',
   setup() {
     const store = useStore();
-    console.log('store', store);
+    window.vm1 = store;
     const dialogVisible = ref(false);
-    const msg = ref('subapp-vue3');
-    const vuexName = computed(() => store.state.global.user);
+    const title = ref('subapp-vue3');
+    const msg = computed(() => store.state.micro.msg);
     const inputValue = ref('');
 
-    // 调用vuex中setGlobalState更新全局状态
-    const handleVuexMsgChange = () => {
-      store.dispatch('global/setGlobalState', {
-        user: {
-          name: inputValue.value,
-        },
-      });
+    console.log('msg', msg);
+
+    const handleChange = () => {
+      store.commit('micro/SET_GLOBAL_STATE', { msg: inputValue.value });
       inputValue.value = '';
       ElMessage.success('姓名已更新为' + inputValue.value);
     };
@@ -60,10 +57,10 @@ export default {
     };
 
     return {
+      title,
       msg,
-      vuexName,
       inputValue,
-      handleVuexMsgChange,
+      handleChange,
       dialogVisible,
       handleClose,
     };

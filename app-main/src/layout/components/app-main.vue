@@ -14,6 +14,7 @@ import { useStore } from 'vuex'
 import { defineComponent, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { start } from 'qiankun'
+import { microStore } from '@/store/modules/micro/global'
 
 export default defineComponent({
   setup() {
@@ -27,12 +28,13 @@ export default defineComponent({
     }
 
     onMounted(() => {
+      ;(window as any).vm = store
       // @ts-ignore
       if (!window.qiankunStarted) {
         // @ts-ignore
         window.qiankunStarted = true
-        console.log('app-main init')
         start()
+        microStore()
       }
     })
 

@@ -3,7 +3,7 @@
  * @Description:
  * @Date: 2021/10/25 18:56:51
  * @LastEditors: jrucker
- * @LastEditTime: 2022/01/27 18:42:08
+ * @LastEditTime: 2022/02/14 14:00:22
  */
 
 import { MutationTree } from 'vuex'
@@ -19,6 +19,7 @@ export type Mutations<S = UserState> = {
   [UserMutationTypes.SET_ROLE_ID](state: S, roleId: string): void
   [UserMutationTypes.SET_ROLE_NAME](state: S, roleName: string): void
   [UserMutationTypes.LOAD_USER_INFO](state: S, payload: boolean): void
+  [UserMutationTypes.SET_STATE](state: S, payload: any): void
 }
 
 export const mutations: MutationTree<UserState> & Mutations = {
@@ -45,5 +46,11 @@ export const mutations: MutationTree<UserState> & Mutations = {
   },
   [UserMutationTypes.LOAD_USER_INFO](state: UserState, payload: boolean) {
     state.loadUserInfo = payload
+  },
+  [UserMutationTypes.SET_STATE](state: UserState, payload) {
+    console.log('SET_STATE', payload)
+    Object.keys(payload).forEach(key => {
+      state[key] = payload[key]
+    })
   }
 }

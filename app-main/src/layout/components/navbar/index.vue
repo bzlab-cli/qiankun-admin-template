@@ -7,7 +7,7 @@
       @toggle-click="toggleSideBar"
     />
     <BreadCrumb id="breadcrumb-container" class="breadcrumb-container" />
-    <div>{{ microUser.name }}</div>
+    <div>{{ msg }}</div>
     <div class="right-menu">
       <el-dropdown class="avatar-container right-menu-item hover-effect" trigger="click">
         <div class="avatar-wrapper">
@@ -33,7 +33,6 @@ import { computed, reactive, toRefs } from 'vue'
 import { useStore } from 'vuex'
 import { AppActionTypes } from '@/store/modules/app/types'
 import { UserActionTypes } from '@/store/modules/user/types'
-import microStore from '@/micro-state'
 
 export default {
   components: {
@@ -54,8 +53,8 @@ export default {
     const avatar = computed(() => {
       return store.state.user.avatar
     })
-    const microUser = computed(() => {
-      return microStore.getGlobalState('user')
+    const msg = computed(() => {
+      return store.state.micro.msg
     })
     const state = reactive({
       toggleSideBar: () => {
@@ -71,7 +70,7 @@ export default {
       device,
       name,
       avatar,
-      microUser,
+      msg,
       ...toRefs(state)
     }
   }

@@ -3,7 +3,7 @@
  * @Description:
  * @Date: 2021/10/25 16:16:39
  * @LastEditors: jrucker
- * @LastEditTime: 2021/11/16 17:25:58
+ * @LastEditTime: 2022/02/14 14:00:07
  */
 
 export enum UserActionTypes {
@@ -26,5 +26,6 @@ export enum UserMutationTypes {
   SET_ORGLIST = 'SET_ORGLIST',
   SET_ORGID = 'SET_ORGID',
   SET_PROFESSIONAL_ID = 'SET_PROFESSIONAL_ID',
-  SET_REGION_NAME = 'SET_REGION_NAME'
+  SET_REGION_NAME = 'SET_REGION_NAME',
+  SET_STATE = 'SET_STATE'
 }

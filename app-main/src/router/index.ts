@@ -3,11 +3,10 @@
  * @Author: jrucker
  * @Date: 2021/10/21 14:13:07
  * @LastEditors: jrucker
- * @LastEditTime: 2022/02/12 22:59:56
+ * @LastEditTime: 2022/02/14 11:58:26
  */
 
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-// import microRouter from '@/micro-app';
 
 const constantFiles = require.context('./constant-modules', true, /\.ts$/)
 let constantModules: Array<RouteRecordRaw> = []
