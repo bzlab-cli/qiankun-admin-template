@@ -35,6 +35,7 @@ export default defineComponent({
         window.qiankunStarted = true
         start()
         microStore()
+        store.commit('micro/SET_GLOBAL_STATE', { msg: '2' })
       }
     })
 

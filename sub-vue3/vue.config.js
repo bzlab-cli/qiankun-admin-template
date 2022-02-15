@@ -7,7 +7,7 @@ module.exports = {
   outputDir: process.env.VUE_APP_OUTPUTDIR,
   // 生产环境打包时不启用SourceMap
   productionSourceMap: false,
-  transpileDependencies: ['common'],
+  // transpileDependencies: ['common'],
   // filenameHashing: true,
   devServer: {
     port: process.env.VUE_APP_PORT,

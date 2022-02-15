@@ -42,8 +42,6 @@ export default {
     const msg = computed(() => store.state.micro.msg);
     const inputValue = ref('');
 
-    console.log('msg', msg);
-
     const handleChange = () => {
       store.commit('micro/SET_GLOBAL_STATE', { msg: inputValue.value });
       inputValue.value = '';

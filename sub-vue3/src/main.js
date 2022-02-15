@@ -17,7 +17,8 @@ const render = ({ routerBase, container } = {}) => {
     history: createWebHistory(__qiankun__ ? routerBase : '/'),
     routes: routers,
   });
-  instance = createApp(App)
+  instance = createApp(App);
+  instance
     .use(router)
     .use(store)
     .use(ElementPlus)
@@ -38,6 +39,6 @@ export async function mount(props) {
 }
 
 export async function unmount() {
-  instance.$el.innerHTML = '';
+  instance.unmount();
   instance = null;
 }
